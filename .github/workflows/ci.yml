@@ -1,0 +1,26 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - setup-task # Trigger on pushes to the setup-task branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Use a standard Ubuntu runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 # Action to checkout your code
+
+    - name: Set up Python
+      uses: actions/setup-python@v5 # Action to set up Python
+      with:
+        python-version: '3.x' # Use any Python 3 version
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt # Install packages from requirements.txt
+
+    # Add more steps here later, e.g., linting, testing, etc.
+    # - name: Run tests
+    #   run: python -m unittest discover
